@@ -4,8 +4,7 @@ metadata:
   name: react-app  # The name of your app
   description: A React app for managing user profiles and authentication.
   annotations:
-    backstage.io/techdocs-ref: dir:./docs  # Assuming you have a docs/ folder, or change it to your docs location
-    github.com/project-url: https://github.com/toluxfash/react-app  # Link to your GitHub repo
+    backstage.io/techdocs-ref: dir:.  # Assuming you have a docs/ folder, or change it to your docs location
 spec:
   type: service  # Describes your React app as a service
   lifecycle: production  # You can change this to "development" if it's still in development
