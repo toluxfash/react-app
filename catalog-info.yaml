@@ -5,7 +5,11 @@ metadata:
   description: A React app for managing user profiles and authentication.
   annotations:
     backstage.io/techdocs-ref: dir:.  # Assuming you have a docs/ folder, or change it to your docs location
+    github.com/project-url: https://github.com/toluxfash/react-app  # Link to your GitHub repo
+    github.com/actions: https://github.com/toluxfash/react-app/actions  # Link to GitHub Actions
+    docker.io/image: https://hub.docker.com/r/fash01/react-app:dev  # Link to your Docker image
 spec:
   type: service  # Describes your React app as a service
-  lifecycle: production  # You can change this to "development" if it's still in development
+  lifecycle: development  # Updated to reflect the development phase
   owner: dev-team  # The team responsible for the app
+
