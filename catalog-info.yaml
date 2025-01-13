@@ -5,7 +5,7 @@ metadata:
   description: A React app for managing user profiles and authentication.
   annotations:
     backstage.io/techdocs-ref: dir:.  # Path to the docs folder
-    github.com/project-slug: toluxfash/react-app  # Format: <org>/<repo>
+    github.com/project-slug: 'toluxfash/react-app'  # Format: <org>/<repo>
 spec:
   type: service  # Describes your React app as a service
   lifecycle: development  # Updated to reflect the development phase
