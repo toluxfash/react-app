@@ -3,6 +3,7 @@ kind: Component
 metadata:
   name: react-app  # The name of your app
   description: A React app for managing user profiles and authentication.
+metadata:
   annotations:
     backstage.io/techdocs-ref: dir:.  # Path to the docs folder
     github.com/project-slug: 'toluxfash/react-app'  # Format: <org>/<repo>
