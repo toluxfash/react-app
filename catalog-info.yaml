@@ -6,7 +6,7 @@ metadata:
   annotations:
     backstage.io/techdocs-ref: dir:.  # Path to the docs folder
     github.com/project-slug: toluxfash/react-app  # Format: <org>/<repo>
-    cicd-backend.github-actions: "true"  # Change boolean to string
+    cicd-backend.github-actions: "https://github.com/toluxfash/react-app/actions"  # Change boolean to string
 spec:
   type: service  # Describes your React app as a service
   lifecycle: development  # Updated to reflect the development phase
