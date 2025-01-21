@@ -1,16 +1,16 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: react-app  # The name of your app
+  name: react-app
   description: A React app for managing user profiles and authentication.
   annotations:
-    github.com/project-slug: toluxfash/react-app # Format: <org>/<repo>
-    backstage.io/techdocs-ref: dir:.  # Path to the docs folder
-    cicd-backend.github-actions: "https://github.com/toluxfash/react-app/actions"  # Change boolean to string
+    github.com/project-slug: toluxfash/react-app
+    backstage.io/techdocs-ref: dir:.
 spec:
-  type: service  # Describes your React app as a service
-  lifecycle: development  # Updated to reflect the development phase
-  owner: dev-team  # The team responsible for the app
+  type: service
+  lifecycle: development
+  owner: dev-team
+
 
 
 
