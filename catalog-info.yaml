@@ -4,8 +4,8 @@ metadata:
   name: react-app  # The name of your app
   description: A React app for managing user profiles and authentication.
   annotations:
+    github.com/project-slug: toluxfash/react-app # Format: <org>/<repo>
     backstage.io/techdocs-ref: dir:.  # Path to the docs folder
-    github.com/project-slug: toluxfash/react-app  # Format: <org>/<repo>
     cicd-backend.github-actions: "https://github.com/toluxfash/react-app/actions"  # Change boolean to string
 spec:
   type: service  # Describes your React app as a service
