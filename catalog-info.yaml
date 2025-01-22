@@ -6,6 +6,7 @@ metadata:
   annotations:
     github.com/project-slug: toluxfash/react-app
     backstage.io/techdocs-ref: dir:.
+    github.com/workflows: ci.yml
 spec:
   type: service
   lifecycle: development
