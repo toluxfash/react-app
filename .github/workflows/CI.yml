@@ -26,30 +26,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run unit tests
-        run: npm test
-
-      - name: Build Next.js app
-        run: npm run build
-
-  # ------------- Static Code Analysis ----------------
-  code-quality:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run ESLint
+      - name: Run ESLint (code quality)
         run: npm run lint
+
+      # (Optional) You don't have unit tests in package.json, so I skipped npm test
+      # If you add vitest or jest later, you can enable:
+      # - name: Run unit tests
+      #   run: npm test
+
+      - name: Build Vite app
+        run: npm run build
 
   # ------------- Docker Build & Push to ECR ----------------
   push:
@@ -91,16 +77,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update Helm chart tag
         run: |
-          sed -i "s|tag: .*|tag: \"${{ github.run_id }}\"|" helm/yamify/values.yaml
+          sed -i "s|tag: .*|tag: \"${{ github.run_id }}\"|" helm/react-chart/values.yaml
 
       - name: Commit and push changes
         run: |
           git config --global user.email "ci-bot@github.com"
           git config --global user.name "GitHub Actions"
           git add helm/react-chart/values.yaml
-          git commit -m "Update image tag to ${{ github.run_id }}"
+          git commit -m "Update image tag to ${{ github.run_id }}" || echo "No changes to commit"
           git push
