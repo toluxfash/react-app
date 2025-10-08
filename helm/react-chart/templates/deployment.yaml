@@ -6,7 +6,7 @@ metadata:
   labels:
     app: react-app
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: react-app
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: react-app
-        image: image: "{{ .Values.image.repository }}/react-app:{{ .Values.image.tag }}"
-
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: 5173
