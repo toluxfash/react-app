@@ -68,7 +68,7 @@ jobs:
           push: true
           tags: ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:${{ github.run_id }}
 
-  # ------------- Update Helm Chart ----------------
+    # ------------- Update Helm Chart ----------------
   update-helm:
     runs-on: ubuntu-latest
     needs: push
@@ -78,16 +78,27 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.TOKEN }}
+          fetch-depth: 0   # fetch full history so we can merge branches
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "ci-bot@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Sync deploy with main
+        run: |
+          git fetch origin
+          # create deploy branch if it doesn’t exist, else switch to it
+          git checkout deploy || git checkout -b deploy
+          # merge latest main into deploy
+          git merge origin/main --no-edit || true
 
       - name: Update Helm chart tag
         run: |
           sed -i "s|tag: .*|tag: \"${{ github.run_id }}\"|" helm/react-chart/values.yaml
-
-      - name: Commit and push changes
-        run: |
-          git config --global user.email "ci-bot@github.com"
-          git config --global user.name "GitHub Actions"
-          git checkout -B deploy
           git add helm/react-chart/values.yaml
           git commit -m "Update image tag to ${{ github.run_id }}" || echo "No changes to commit"
-          git push origin deploy --force
+
+      - name: Push changes
+        run: |
+          git push origin deploy
