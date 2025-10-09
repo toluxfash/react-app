@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   repository: 526718636036.dkr.ecr.us-east-1.amazonaws.com/react-app
   pullPolicy: IfNotPresent
-  tag: "18350456654"
+  tag: "18368076069"
 
 ingress:
   enabled: false
