@@ -21,3 +21,6 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: 5173
+      imagePullSecrets:
+      - name: ecr-secret
+
